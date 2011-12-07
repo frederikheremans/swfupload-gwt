@@ -8,7 +8,7 @@
   <parent>
     <groupId>org.swfupload</groupId>
     <artifactId>swfupload-gwt-main</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
   </parent>
   <artifactId>swfupload-gwt-examples</artifactId>
   <packaging>war</packaging>
