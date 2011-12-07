@@ -1,0 +1,7 @@
+<module>
+  <inherits name="com.google.gwt.user.User"/>
+  <inherits name="com.google.gwt.user.theme.standard.Standard"/>
+  
+  <inherits name="org.swfupload.SWFUpload"/>
+  <entry-point class="org.swfupload.examples.buttons.client.UploadButtons"/>
+</module>

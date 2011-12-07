@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>SWFUploadDemo</title>
+    <script type="text/javascript" language="javascript" src="org.swfupload.examples.buttons.UploadButtons.nocache.js"></script>
+  	<style type="text/css">
+	  	BODY { max-width: 50em; }
+	
+	  	#shell, #demo { display: none; }
+	    
+	  	P.note {
+	  	  padding: 1em;
+	  	  border: 2px dashed #ddd;
+	  	  max-width: 30em;
+	  	  background: lightyellow;
+	  	}
+	  	SPAN.hl {
+	  	  font-weight: bold;
+	  	  font-size: 1.1em;
+	  	  color: red;
+	  	  margin-right: 0.5em;
+	  	}
+	  	.swfupload {
+	  	  margin-left: 1em;
+	  	  margin-right: 1em;
+	    }
+  	</style>
+  </head>
+
+  <body>
+    <h1>SWFUpload for GWT Demo</h1>
+    
+    <p id="warning" class="note" style="display: none;">
+    	<span class="hl">NOTE:</span>This demo will only function in web mode. 
+    	Press the "Compile/Browse" button to launch this demo in a browser.
+    </p>
+    
+    <div id="demo">
+	  <h2>Flash 10 compatibility</h4>
+
+	  <p>
+	    To support Flash 10, SWFUpload can now render the button to be clicked 
+	    for opening the file browser dialog. The following are example buttons 
+	    which can be used to match the look and feel of the rest of your application.
+	  </p>
+      
+      <p><div id="styled1"></div> GWT button ("standard" theme)</p>
+
+      
+      <p><div id="xpbutton"></div> Windows XP style</p>
+      
+      <p><div id="gtkbutton"></div> Gtk native button (Ubuntu "Human" theme)</p>
+      
+      <p><button class="swfupload">Upload</button>Native browser button (not functional, for comparison only)
+
+    </div>
+
+  </body>
+</html>

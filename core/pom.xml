@@ -1,0 +1,96 @@
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+        http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>swfupload-gwt-main</artifactId>
+    <groupId>org.swfupload</groupId>
+    <version>1.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>swfupload-gwt</artifactId>
+  <packaging>jar</packaging>
+  <name>swfupload-gwt</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>${gwtVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+      </resource>
+    </resources>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <!-- GWT Unit tests cannot be run by surefire (yet) -->
+            <exclude>**/*Test.java</exclude>
+            <exclude>**/*Suite.java</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>1.1-SNAPSHOT</version>
+        <configuration>
+          <includes>**/*Suite.java</includes>
+          <out>target/gwt-tmp</out>
+          <gen>target/gwt-tmp</gen>
+          <generateDirectory>target/gwt-tmp</generateDirectory>
+          <logLevel>INFO</logLevel>
+          <extraJvmArgs>-Xmx256M</extraJvmArgs>
+          <style></style>
+          <sourcesOnPath>true</sourcesOnPath>
+          <resourcesOnPath>true</resourcesOnPath>
+          <gwtVersion>${gwtVersion}</gwtVersion>
+        </configuration>
+        <executions>
+          <execution>
+            <id>gwt-test</id>
+            <phase>test</phase>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>.gwt-tmp</directory>
+              <directory>tomcat</directory>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

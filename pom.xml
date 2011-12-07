@@ -1,0 +1,84 @@
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+        http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.swfupload</groupId>
+  <artifactId>swfupload-gwt-main</artifactId>
+  <name>swfupload-gwt-main</name>
+  <packaging>pom</packaging>
+  <version>1.1-SNAPSHOT</version>
+
+  <properties>
+    <gwtVersion>1.5.3</gwtVersion>
+  </properties>
+
+  <modules>
+    <module>core</module>
+    <module>examples</module>
+  </modules>
+
+  <prerequisites>
+    <maven>[2.1,)</maven>
+  </prerequisites>
+
+   <scm>
+    <connection>scm:svn:http://swfupload-gwt.googlecode.com/svn/trunk</connection>
+    <developerConnection>scm:svn:https://swfupload-gwt.googlecode.com/svn/trunk</developerConnection>
+    <url>http://code.google.com/p/swfupload-gwt/</url>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>swfupload-gwt.googlecode.releases</id>
+      <url>dav:https://swfupload-gwt.googlecode.com/svn/maven/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>swfupload-gwt.googlecode.snapshots</id>
+      <url>dav:https://swfupload-gwt.googlecode.com/svn/maven/snapshots/</url>
+      <uniqueVersion>false</uniqueVersion>
+    </snapshotRepository>
+  </distributionManagement>
+
+
+  <build>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-webdav</artifactId>
+        <version>1.0-beta-2</version>
+      </extension>
+    </extensions>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <configuration>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>1.5</source>
+            <target>1.5</target>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <configuration>
+            <encoding>UTF-8</encoding>
+          </configuration>
+       </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+</project>
