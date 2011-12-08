@@ -4,8 +4,8 @@ import org.swfupload.client.SWFUpload.ButtonAction;
 import org.swfupload.client.SWFUpload.ButtonCursor;
 import org.swfupload.client.SWFUpload.WindowMode;
 import org.swfupload.client.event.DebugHandler;
-import org.swfupload.client.event.FileDialogStartHandler;
 import org.swfupload.client.event.FileDialogCompleteHandler;
+import org.swfupload.client.event.FileDialogStartHandler;
 import org.swfupload.client.event.FileQueueErrorHandler;
 import org.swfupload.client.event.FileQueuedHandler;
 import org.swfupload.client.event.SWFUploadLoadedHandler;
@@ -16,13 +16,14 @@ import org.swfupload.client.event.UploadStartHandler;
 import org.swfupload.client.event.UploadSuccessHandler;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
-import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 
 public final class UploadBuilder {
   
-  @SuppressWarnings("unused")
+  public static final String FLASH_MOVIE_FILE_NAME = "swfupload.swf";
+  
   private static void fireDebugEvent(DebugHandler handler, String message) {
     DebugHandler.DebugEvent event = new DebugHandler.DebugEvent(message);
     UncaughtExceptionHandler ueh = GWT.getUncaughtExceptionHandler();
@@ -39,7 +40,6 @@ public final class UploadBuilder {
     }
   }
 
-  @SuppressWarnings("unused")
   private static void fireFileDialogStartEvent(FileDialogStartHandler handler) {
     UncaughtExceptionHandler ueh = GWT.getUncaughtExceptionHandler();
     FileDialogStartHandler.FileDialogStartEvent event = new FileDialogStartHandler.FileDialogStartEvent();
@@ -56,7 +56,6 @@ public final class UploadBuilder {
     }
   }
   
-  @SuppressWarnings("unused")
   private static void fireFileDialogCompleteEvent(FileDialogCompleteHandler handler, int selected, int queued) {
     FileDialogCompleteHandler.FileDialogCompleteEvent event = new FileDialogCompleteHandler.FileDialogCompleteEvent(selected, queued);
     UncaughtExceptionHandler ueh = GWT.getUncaughtExceptionHandler();
@@ -73,7 +72,6 @@ public final class UploadBuilder {
     }
   }
   
-  @SuppressWarnings("unused")
   private static void fireFileQueuedEvent(FileQueuedHandler handler, File file) {
     FileQueuedHandler.FileQueuedEvent event = new FileQueuedHandler.FileQueuedEvent(file);
     UncaughtExceptionHandler ueh = GWT.getUncaughtExceptionHandler();
@@ -90,7 +88,6 @@ public final class UploadBuilder {
     }
   }
   
-  @SuppressWarnings("unused")
   private static void fireFileQueueErrorEvent(FileQueueErrorHandler handler, File f, int queueError, String message) {
     FileQueueErrorHandler.FileQueueErrorEvent event = new FileQueueErrorHandler.FileQueueErrorEvent(f, queueError, message);
     UncaughtExceptionHandler ueh = GWT.getUncaughtExceptionHandler();
@@ -107,7 +104,6 @@ public final class UploadBuilder {
     }
   }
 
-  @SuppressWarnings("unused")
   private static void fireSWFUploadLoadedEvent(SWFUploadLoadedHandler handler) {
     UncaughtExceptionHandler ueh = GWT.getUncaughtExceptionHandler();
     if (ueh != null) {
@@ -123,7 +119,6 @@ public final class UploadBuilder {
     }
   }
   
-  @SuppressWarnings("unused")
   private static void fireUploadCompleteEvent(UploadCompleteHandler handler, File file) {
     UploadCompleteHandler.UploadCompleteEvent event = new UploadCompleteHandler.UploadCompleteEvent(file);
     UncaughtExceptionHandler ueh = GWT.getUncaughtExceptionHandler();
@@ -140,7 +135,6 @@ public final class UploadBuilder {
     }
   }
   
-  @SuppressWarnings("unused")
   private static void fireUploadErrorEvent(UploadErrorHandler handler, File file, int uploadError, String message) {
     UploadErrorHandler.UploadErrorEvent event = new UploadErrorHandler.UploadErrorEvent(file, uploadError, message);
     UncaughtExceptionHandler ueh = GWT.getUncaughtExceptionHandler();
@@ -157,7 +151,6 @@ public final class UploadBuilder {
     }
   }
 
-  @SuppressWarnings("unused")
   private static void fireUploadProgressEvent(UploadProgressHandler handler, File file, double bytesComplete, double totalBytes) {
     UploadProgressHandler.UploadProgressEvent event = new UploadProgressHandler.UploadProgressEvent(file, bytesComplete, totalBytes);
     UncaughtExceptionHandler ueh = GWT.getUncaughtExceptionHandler();
@@ -174,7 +167,6 @@ public final class UploadBuilder {
     }
   }
   
-  @SuppressWarnings("unused")
   private static void fireUploadStartEvent(UploadStartHandler handler, File file) {
     UploadStartHandler.UploadStartEvent event = new UploadStartHandler.UploadStartEvent(file);
     UncaughtExceptionHandler ueh = GWT.getUncaughtExceptionHandler();
@@ -191,7 +183,6 @@ public final class UploadBuilder {
     }
   }
   
-  @SuppressWarnings("unused")
   private static void fireUploadSuccessEvent(UploadSuccessHandler handler, File file, String data) {
     UploadSuccessHandler.UploadSuccessEvent event = new UploadSuccessHandler.UploadSuccessEvent(file, data);
     UncaughtExceptionHandler ueh = GWT.getUncaughtExceptionHandler();
@@ -349,6 +340,10 @@ public final class UploadBuilder {
 
   public native void setButtonDisabled(boolean disabled) /*-{
     this.@org.swfupload.client.UploadBuilder::settings['button_disabled'] = disabled;
+  }-*/;
+  
+  public native void setFlashMovieLocation(String location) /*-{
+    this.@org.swfupload.client.UploadBuilder::settings['flash_url'] = location;
   }-*/;
   
   /**
