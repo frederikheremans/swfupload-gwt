@@ -19,10 +19,15 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public final class UploadBuilder {
   
   public static final String FLASH_MOVIE_FILE_NAME = "swfupload.swf";
+  public static final String MINIFIED_JS_NAME = "swfupload-min.js";
+  public static final String SCRIPT_ID = "swfupload-script";
   
   private static void fireDebugEvent(DebugHandler handler, String message) {
     DebugHandler.DebugEvent event = new DebugHandler.DebugEvent(message);
@@ -210,6 +215,20 @@ public final class UploadBuilder {
   
   public UploadBuilder() {
     this.settings = JavaScriptObject.createObject();
+  }
+  
+  /**
+   * Adds the javascript required for SWF-upload to the document. This is a no-op
+   * when the script-element is already present.
+   */
+  public static final void addUploadJavascript() {
+    if(DOM.getElementById(SCRIPT_ID) == null) {
+      Element e = DOM.createElement("script"); 
+      e.setId(SCRIPT_ID);
+      e.setAttribute("language", "JavaScript");
+      e.setAttribute("src", GWT.getHostPageBaseURL() + MINIFIED_JS_NAME);
+      DOM.appendChild(RootPanel.get().getElement(), e); 
+    }
   }
   
   public static native String getVersion() /*-{
