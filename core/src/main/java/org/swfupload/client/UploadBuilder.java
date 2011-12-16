@@ -226,7 +226,7 @@ public final class UploadBuilder {
       Element e = DOM.createElement("script"); 
       e.setId(SCRIPT_ID);
       e.setAttribute("language", "JavaScript");
-      e.setAttribute("src", GWT.getHostPageBaseURL() + MINIFIED_JS_NAME);
+      e.setAttribute("src", GWT.getModuleBaseURL() + MINIFIED_JS_NAME);
       DOM.appendChild(RootPanel.get().getElement(), e); 
     }
   }
